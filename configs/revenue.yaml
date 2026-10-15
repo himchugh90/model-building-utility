@@ -1,0 +1,15 @@
+extends: base.yaml
+run_name: business_revenue
+task: regression
+data:
+  source: csv
+  path: data/small_business_revenue.csv
+  target: monthly_revenue
+  drop_columns: [business_id]
+split: {test_size: 0.2, stratify: false}
+models:
+  - name: ridge
+  - name: gradient_boosting
+    params: {n_estimators: 150}
+selection: {metric: rmse, cv_folds: 5}
+evaluation: {metrics: [r2, rmse, mae]}

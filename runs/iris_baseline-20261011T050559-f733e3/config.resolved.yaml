@@ -1,0 +1,52 @@
+run_name: iris_baseline
+task: classification
+seed: 42
+plugins: []
+stages:
+- load
+- split
+- select
+- train
+- evaluate
+- predict
+- save
+data:
+  source: csv
+  path: data/iris.csv
+  dataset: null
+  read_options: {}
+  target: species
+  features: null
+  drop_columns: []
+split:
+  strategy: random
+  test_size: 0.2
+  stratify: true
+auto_preprocess:
+  enabled: true
+  outliers: true
+  outlier_factor: 1.5
+  replace_with: mean
+  knn_neighbors: 5
+preprocessing: []
+models:
+- name: logistic_regression
+  params:
+    max_iter: 200
+- name: random_forest
+  params:
+    n_estimators: 100
+- name: knn
+  params:
+    n_neighbors: 5
+selection:
+  metric: accuracy
+  cv_folds: 5
+evaluation:
+  metrics:
+  - accuracy
+  - f1_macro
+inference:
+  input_path: null
+output:
+  dir: runs

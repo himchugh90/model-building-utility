@@ -1,0 +1,15 @@
+extends: base.yaml
+run_name: invoices_late_payment
+task: classification
+data:
+  source: csv
+  path: data/sample_data/invoices.csv
+  target: paid_late
+  drop_columns: [invoice_id]      # an ID is not a feature (it would create 600 one-hot columns)
+models:
+  - name: logistic_regression
+    params: {max_iter: 500}
+  - name: random_forest
+    params: {n_estimators: 200}
+selection: {metric: f1_macro, cv_folds: 5}
+evaluation: {metrics: [accuracy, recall_macro, f1_macro]}

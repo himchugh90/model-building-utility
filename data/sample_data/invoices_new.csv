@@ -1,0 +1,5 @@
+invoice_id,customer_segment,region,invoice_amount,customer_age_months,past_late_payments,payment_terms_days,discount_pct
+INV-90001,retail,north,1200.0,48.0,0,30,2.0
+INV-90002,construction,,3500.0,6.0,4,60,0.0
+INV-90003,nonprofit,east,,30.0,1,45,
+INV-90004,services,south,250000.0,,0,30,5.0

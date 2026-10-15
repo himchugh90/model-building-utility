@@ -1,0 +1,51 @@
+run_name: invoices_late_payment
+task: classification
+seed: 42
+plugins: []
+stages:
+- load
+- split
+- select
+- train
+- evaluate
+- predict
+- save
+data:
+  source: csv
+  path: data/sample_data/invoices.csv
+  dataset: null
+  read_options: {}
+  target: paid_late
+  features: null
+  drop_columns:
+  - invoice_id
+split:
+  strategy: random
+  test_size: 0.2
+  stratify: true
+auto_preprocess:
+  enabled: true
+  outliers: true
+  outlier_factor: 1.5
+  replace_with: mean
+  knn_neighbors: 5
+preprocessing: []
+models:
+- name: logistic_regression
+  params:
+    max_iter: 500
+- name: random_forest
+  params:
+    n_estimators: 200
+selection:
+  metric: f1_macro
+  cv_folds: 5
+evaluation:
+  metrics:
+  - accuracy
+  - recall_macro
+  - f1_macro
+inference:
+  input_path: null
+output:
+  dir: runs

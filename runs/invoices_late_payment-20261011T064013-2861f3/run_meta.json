@@ -1,0 +1,130 @@
+{
+  "run_id": "invoices_late_payment-20261011T064013-2861f3",
+  "task": "classification",
+  "target": "paid_late",
+  "features": [
+    "customer_segment",
+    "region",
+    "invoice_amount",
+    "customer_age_months",
+    "past_late_payments",
+    "payment_terms_days",
+    "discount_pct"
+  ],
+  "classes": [
+    "no",
+    "yes"
+  ],
+  "selected_model": "logistic_regression",
+  "metrics": {
+    "accuracy": 0.7333333333333333,
+    "recall_macro": 0.6777920410783055,
+    "f1_macro": 0.6825396825396826
+  },
+  "cv_results": {
+    "logistic_regression": {
+      "mean": 0.6516669901679293,
+      "std": 0.02653326761372095
+    },
+    "random_forest": {
+      "mean": 0.6207678036249465,
+      "std": 0.04362211227046577
+    }
+  },
+  "stages": [
+    "load",
+    "split",
+    "select",
+    "train",
+    "evaluate",
+    "predict",
+    "save"
+  ],
+  "categorical_features": [
+    "customer_segment",
+    "region"
+  ],
+  "preprocessing": {
+    "numeric_columns": [
+      "invoice_amount",
+      "customer_age_months",
+      "past_late_payments",
+      "payment_terms_days",
+      "discount_pct"
+    ],
+    "categorical_columns": [
+      "customer_segment",
+      "region"
+    ],
+    "missing_values_in_train": {
+      "region": 15,
+      "customer_age_months": 19,
+      "discount_pct": 29
+    },
+    "outliers_replaced_in_train": {
+      "invoice_amount": {
+        "count": 30,
+        "lower": -1165.1612500000003,
+        "upper": 3675.5687500000004,
+        "replaced_with": 1227.1299777777779
+      },
+      "past_late_payments": {
+        "count": 2,
+        "lower": -3.0,
+        "upper": 5.0,
+        "replaced_with": 1.00836820083682
+      },
+      "discount_pct": {
+        "count": 38,
+        "lower": -3.5174999999999996,
+        "upper": 5.862499999999999,
+        "replaced_with": 1.3281113801452784
+      }
+    }
+  },
+  "rows": {
+    "total": 600,
+    "train": 480,
+    "test": 120
+  },
+  "feature_stats": {
+    "invoice_amount": {
+      "mean": 1735.0474375000001,
+      "std": 4033.0345508316664,
+      "min": 156.62,
+      "max": 73841.6
+    },
+    "customer_age_months": {
+      "mean": 59.288503253796094,
+      "std": 33.37809191238173,
+      "min": 1.0,
+      "max": 119.0
+    },
+    "past_late_payments": {
+      "mean": 1.0291666666666666,
+      "std": 1.1075671270171352,
+      "min": 0.0,
+      "max": 6.0
+    },
+    "payment_terms_days": {
+      "mean": 36.125,
+      "std": 13.638066889262262,
+      "min": 15.0,
+      "max": 60.0
+    },
+    "discount_pct": {
+      "mean": 2.048580931263858,
+      "std": 2.92232734184246,
+      "min": 0.0,
+      "max": 10.56
+    }
+  },
+  "created_utc": "2026-10-11T06:40:15.778105+00:00",
+  "duration_seconds": 1.842,
+  "versions": {
+    "python": "3.11.6",
+    "scikit-learn": "1.9.1",
+    "pandas": "3.0.6",
+    "numpy": "2.4.6"
+  }
+}

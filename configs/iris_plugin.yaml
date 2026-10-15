@@ -1,0 +1,9 @@
+extends: iris.yaml
+run_name: iris_with_plugin
+plugins: [my_plugin]
+models:
+  - name: logistic_regression
+    params: {max_iter: 200}
+  - name: extra_trees          # registered by my_plugin.py
+evaluation:
+  metrics: [accuracy, balanced_accuracy]

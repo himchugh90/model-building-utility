@@ -1,0 +1,18 @@
+# Shared defaults. Other configs pull this in with `extends: base.yaml`.
+seed: 42
+split:
+  test_size: 0.2
+  stratify: true
+output:
+  dir: runs
+# stages: [load, split, select, train, evaluate, predict, save]   # default; remove or reorder as needed
+
+# Automatic preprocessing (on by default). Fit on training data only; features only, never the target.
+#   numeric:     IQR outliers -> mean of non-outliers, standard scaling, KNN imputation of missing values
+#   non-numeric: most-frequent fill, one-hot encoding (unseen categories ignored when scoring)
+# auto_preprocess:
+#   enabled: true
+#   outliers: true          # false = keep outliers (e.g. fraud / anomaly problems)
+#   outlier_factor: 1.5     # 3.0 = treat only extreme outliers
+#   replace_with: mean      # or median
+#   knn_neighbors: 5

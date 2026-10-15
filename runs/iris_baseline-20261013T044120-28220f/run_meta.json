@@ -1,0 +1,102 @@
+{
+  "run_id": "iris_baseline-20261013T044120-28220f",
+  "task": "classification",
+  "target": "species",
+  "features": [
+    "sepal_length_cm",
+    "sepal_width_cm",
+    "petal_length_cm",
+    "petal_width_cm"
+  ],
+  "classes": [
+    "setosa",
+    "versicolor",
+    "virginica"
+  ],
+  "selected_model": "logistic_regression",
+  "metrics": {
+    "accuracy": 0.9333333333333333,
+    "f1_macro": 0.9333333333333332
+  },
+  "cv_results": {
+    "logistic_regression": {
+      "mean": 0.9583333333333334,
+      "std": 0.026352313834736508
+    },
+    "random_forest": {
+      "mean": 0.95,
+      "std": 0.0311804782231162
+    },
+    "knn": {
+      "mean": 0.9333333333333333,
+      "std": 0.020412414523193187
+    }
+  },
+  "stages": [
+    "load",
+    "split",
+    "select",
+    "train",
+    "evaluate",
+    "predict",
+    "save"
+  ],
+  "categorical_features": [],
+  "preprocessing": {
+    "numeric_columns": [
+      "sepal_length_cm",
+      "sepal_width_cm",
+      "petal_length_cm",
+      "petal_width_cm"
+    ],
+    "categorical_columns": [],
+    "missing_values_in_train": {},
+    "outliers_replaced_in_train": {
+      "sepal_width_cm": {
+        "count": 3,
+        "lower": 2.0125,
+        "upper": 4.1125,
+        "replaced_with": 3.0358974358974358
+      }
+    }
+  },
+  "rows": {
+    "total": 150,
+    "train": 120,
+    "test": 30
+  },
+  "feature_stats": {
+    "sepal_length_cm": {
+      "mean": 5.841666666666667,
+      "std": 0.8409261933993364,
+      "min": 4.3,
+      "max": 7.9
+    },
+    "sepal_width_cm": {
+      "mean": 3.048333333333333,
+      "std": 0.4485238783696885,
+      "min": 2.0,
+      "max": 4.4
+    },
+    "petal_length_cm": {
+      "mean": 3.77,
+      "std": 1.7685202474233135,
+      "min": 1.1,
+      "max": 6.9
+    },
+    "petal_width_cm": {
+      "mean": 1.2049999999999998,
+      "std": 0.7626634003181705,
+      "min": 0.1,
+      "max": 2.5
+    }
+  },
+  "created_utc": "2026-10-13T04:41:22.121538+00:00",
+  "duration_seconds": 1.324,
+  "versions": {
+    "python": "3.11.6",
+    "scikit-learn": "1.9.1",
+    "pandas": "3.0.6",
+    "numpy": "2.4.6"
+  }
+}

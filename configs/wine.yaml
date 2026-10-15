@@ -1,0 +1,8 @@
+extends: base.yaml
+run_name: wine_baseline
+task: classification
+data: {source: sklearn, dataset: wine, target: target}
+models:
+  - name: logistic_regression
+    params: {max_iter: 500}
+  - name: svm

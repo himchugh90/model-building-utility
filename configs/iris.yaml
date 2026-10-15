@@ -1,0 +1,29 @@
+extends: base.yaml
+run_name: iris_baseline
+task: classification
+
+data:
+  source: csv
+  path: data/iris.csv        # run `python scripts/make_sample_data.py` to create it
+  target: species
+  # drop_columns: [Id]       # uncomment if your CSV has an id column
+  # features: [...]          # omit to use every other column
+
+# Outliers, missing values, scaling and one-hot encoding are automatic (see auto_preprocess in base.yaml).
+# List extra steps here only if you need them; they run after the automatic ones.
+preprocessing: []
+
+models:
+  - name: logistic_regression
+    params: {max_iter: 200}
+  - name: random_forest
+    params: {n_estimators: 100}
+  - name: knn
+    params: {n_neighbors: 5}
+
+selection:
+  metric: accuracy
+  cv_folds: 5
+
+evaluation:
+  metrics: [accuracy, f1_macro]
